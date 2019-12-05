@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>复习</title>
+</head>
+<body>
+  <div id="wrap">
+    <!-- 插值  {{}} -->
+    <h3>{{msg}}</h3>
+    <!-- 绑定属性 v-bind:属性名="vue实例对象中的数据" -->
+    <!-- <img v-bind:src="img" alt=""> -->
+    <img :src="img" alt="">
+    <!-- v-bind: 的简便写法  ： -->
+    <!-- 事件 v-on:click = "函数"   简写 @click="fn" -->
+    <button v-on:click = "fn">点击事件</button>
+    <!-- v-show = "bool 隐式转换"  显示与隐藏 -->
+    <a href="http://baidu.com" v-show="bool">百度一下</a>
+    <!-- v-if = "bool" v-else-if=""... v-else   -->
+    <p v-if="Number(isNumber)">这是一个数字</p>
+    <p v-else-if="isNaN(isNumber)">这是一个NaN</p>
+    <p v-else>这是一个字符串</p>
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    // vue的实例化对象
+    new Vue({
+      el: "#wrap", //指定容器
+      data: {
+        msg: "hello Vue!",
+        img: "img/bg.jpg",
+        bool: true,
+        isNumber: "123a"
+      },
+      methods: {
+        fn: function() {
+          alert("11111")
+        }
+      }
+    })
+
+   console.log( Number("a") )  //-> NaN
+   console.log( isNaN("a"))  // true
+   console.log( isNaN("1"))  // false
+  
+  </script>
+</body>
+</html>

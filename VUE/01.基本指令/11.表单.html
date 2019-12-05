@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>表单</title>
+</head>
+<body>
+  <!-- 表单提交事件  v-on:submit -->
+  <div id="app">
+      <!-- v-on:submit.prevent  阻止默认行为 阻止刷新页面-->
+      <!-- 表单的默认行为是刷新页面 -->
+
+      <!-- 绑定数据username -->
+      用户名：<input type="text" v-model="username">
+      <br>
+      <!-- 绑定数据password -->
+      密码：<input type="text" v-model="password">
+      <br>
+      <!-- 提交按钮  提交数据-->
+      <input type="submit" v-on:click="add"> 
+      <!-- 重置按钮 填写好的数据重置回初始状态-->
+      <input type="reset" >
+      <!-- 按钮 没有特殊含义-->
+      <input type="button" >
+
+    <table border="1" width="500">
+      <thead>
+        <tr>
+          <th>姓名</th>
+          <th>密码</th>
+        </tr>
+      </thead>
+      <tbody> 
+        <!-- 遍历数组数据 -->
+        <tr v-for="user in userlist">
+          <td>{{ user.username }}</td>
+          <td>{{ user.password }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        username: "",
+        password: "",
+        userlist: [
+          {
+            username: "zhangsan",
+            password: "123456"
+          },
+          {
+            username: "lisi",
+            password: "123456"
+          },
+          {
+            username:"",
+            password: ""
+          }
+        ]
+      },
+      methods: {
+        add:function() {
+          var obj = {};
+          obj.username = this.username;
+          obj.password = this.password;
+          this.userlist.push( obj )
+        }
+      }
+    })
+  
+  </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>图片轮播</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    #wrap {
+      width: 100%;
+      overflow: hidden;
+    }
+    #imgs {
+      width: 5000px;
+      margin-left: 0px;
+      font-size: 0;
+    }
+    #imgs img {
+      width: 500px;
+      margin: 10px
+    }
+  </style>
+</head>
+
+<body>
+  <div id="wrap">
+    <div id="imgs" style="margin-left: 0px;">
+      <img src="images/1.jpg">
+      <img src="images/2.jpg">
+      <img src="images/3.jpg">
+      <img src="images/4.jpg">
+      <img src="images/5.jpg">
+    </div>
+  </div>
+</body>
+<script>
+  // 获取imgs
+  var imgs = document.querySelector("#imgs");
+  // var pics = document.querySelectorAll("img");
+  // 计时器 setInterval(fn,time)
+  console.log(imgs.children);
+
+  function run(){
+    // 获取元素的marginleft值， 只要数字，不要单位
+    var l = parseInt(imgs.style.marginLeft) - 1;
+    imgs.style.marginLeft = l + "px";
+    if(l == -520) {
+      imgs.appendChild(imgs.children[0]);
+      imgs.style.marginLeft = 0 + "px";
+    }
+  }
+  // setTimeout()
+  var time = setInterval(run,10)
+  // onmouseenter 鼠标移入
+  imgs.onmouseenter = function(){
+    clearInterval(time)
+  }
+  imgs.onmouseleave = function() {
+    time = setInterval(run,10)
+  }
+</script>
+</html>

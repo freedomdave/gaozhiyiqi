@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>vue指令</title>
+</head>
+<body>
+  <div id="app">
+    <!-- <a v-bind:href="url">百度一下</a> -->
+    <p v-text="htmlMsg">我</p>
+    <p v-html="htmlMsg">W</p>
+    <!-- <button v-on:click="al">点我试试</button> -->
+  </div>
+  <!-- 引入vue.js -->
+
+  <script src="../js/vue.js"></script>
+  <script>
+    // 绑定属性  v-bind:属性名="data里面的数据"
+    // 点击事件  v-on:click="fn"
+    new Vue({
+      el: "#app",
+      data: {
+        // url: "http://baidu.com",
+        msg: "我是p标签的内容",
+        htmlMsg: "<b>我是加粗的文字</b>"
+      },
+      //方法，点击事件的函数，写在这个对象里
+      // methods: {
+      //   al: function() {
+      //     alert(111);
+      //   }
+      // }
+    })
+  </script>
+</body>
+</html>

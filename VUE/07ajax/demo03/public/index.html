@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>你的网站已经启动</h1>
+  <div class="box"></div>
+  <button>点击获取数据</button>
+  <script src="js/jquery.js"></script>
+  <script>
+    $("button").click(function () {
+      $.get({
+        url: "/data/1.txt",
+        beforeSend: function() {
+          $(".box").text("加载中。。。")
+          alert("发送请求前执行的函数")
+        },
+        success: function(res) {
+          $(".box").text(res)
+        }
+      })
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <!-- vue模板语法 -->
+    <p>{{ msg }}</p>
+
+    {{ {name:"xiaoming"} }}
+    <!-- 可以运算 -->
+    <p> {{ 1>2 ? "真":"假" }}</p>
+  </div>
+  <!-- 引入vue.js -->
+  <script src="../js/vue.js"></script>
+  <script>
+    // vue模板语法 {{}}   angular {{}}  react {}
+    // 如果有三个大括号在一起，里面的大括号要与外面的括号间有空格，否则报错 {{ {} }}
+    // 实例化vue对象
+    new Vue({ //参数是一个对象
+      el:"#app", // 指定地址
+      // data 值是一个对象
+      data: {
+        msg: "hello vue.js"
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>组件间传值</title>
+</head>
+<body>
+  <div id="app">
+    <app></app>
+  </div>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    // 创建一个空的vue实例,来实现两个组件间传值
+    var bus = new Vue();
+    // $emit 触发事件
+    // $on   绑定事件
+
+    // 组件A, 组件A接收组件B的数据
+    Vue.component("A",{
+      // 模板 template
+      template: `
+        <div>
+          我是组件A，{{msg}}
+        </div>
+      `,
+      data: function() {
+        return {
+          msg: "",
+        }
+      },
+      mounted: function() {
+        // 挂载完成前，执行的代码
+        var self = this;
+        // 在bus.$on 中 this指向的是 bus
+        bus.$on("send",function(d) {
+          self.msg = d;
+        })
+      }
+    })
+
+    // 组件B
+    Vue.component("B",{
+      template:`
+        <div>
+          我是组件B，点击后面的按钮给组件A传值
+          <button v-on:click="sendMessage">按钮</button>
+        </div>
+      `,
+      methods: {
+        sendMessage: function() {
+          // 通过上面的空Vue对象 bus 去传递数据
+          // Vue.$emit() 触发事件
+          bus.$emit("send","我是组件B的数据");
+        }
+      }
+    })  
+    Vue.component("app", {
+      template: `
+        <div>
+          <A></A>
+          <B></B>
+        </div>
+      `
+    })
+
+    new Vue({
+      el: "#app",
+    })
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>作业</title>
+  <style>
+    table {
+      width: 500px;
+    }
+
+    table,
+    td {
+      border: 1px solid #888;
+    }
+
+    .modal {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+      display: none;
+    }
+    .modal-content {
+      width: 65%;
+      margin: 50px auto 0;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #fff;
+    }
+    .modal-footer {
+      float: right;
+    }
+    .clear {
+      clear: both;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <!-- v-on:event.prevent="fn"  : prevent阻止事件默认行为 -->
+    <!-- v-on:submit vue里面的表单提交事件 -->
+    <form v-on:submit.prevent="addUser">
+      <label for="username">用户名：</label>
+      <!-- 双向绑定 v-model -->
+      <input type="text" id="username" v-model="newUser.username">
+      <br>
+      <label for="age">年龄：</label>
+      <input type="text" id="age" v-model="newUser.age">
+      <br>
+      <input type="submit" value="添加">
+      <input type="reset" value="重置">
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <td>序号</td>
+          <td>姓名</td>
+          <td>年龄</td>
+          <td>操作</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  v-for="user,index in users">
+          <td>{{ index + 1 }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.age }}</td>
+          <td>
+            <button v-on:click="delUser(index)">删除</button>
+          </td>
+        </tr>
+        <tr v-if=" users.length == 0 ">
+          <!-- colspan=number  合并多少列  rowspan=number  合并多少行 -->
+          <td colspan="4">暂无数据。。。</td>
+        </tr>
+        <tr v-else>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>
+            <button v-on:click="delAll">全部删除</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- 模态框 -->
+    <div class="modal">
+      <div class="modal-content">
+        <div class="modal-title">
+          <h2>是否要删除此条数据</h2>
+        </div>
+        <div class="modal-footer">
+          <button v-on:click="quxiao" >取消</button>
+          <button v-on:click="isDel">删除</button>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+
+    new Vue({
+      el: "#app",
+      data: {
+        users: [
+          {
+            username: "张三",
+            age: 12
+          },
+          {
+            username: "李四",
+            age: 11
+          }
+        ],
+        newUser: {
+          username: "",
+          age: ""
+        },
+        // 存index值
+        flag: -1
+      },
+      methods: {
+        addUser: function () {
+          this.users.push(this.newUser);
+          this.newUser = { username: "", age: "" };
+        },
+        delUser: function (i) {
+          // this.users.splice(i, 1);
+          var modal = document.querySelector(".modal");
+          modal.style.display = "block";
+          this.flag = i;
+        },
+        quxiao: function() {
+          var modal = document.querySelector(".modal");
+          modal.style.display = "none";
+        },
+        isDel: function() {
+          if(this.flag == -100) {
+            this.users = [];
+          }else {
+            this.users.splice(this.flag,1);
+          }  
+          this.flag = -1; // flag回到初始状态
+          var modal = document.querySelector(".modal");
+          modal.style.display = "none";
+        },
+        delAll: function() {
+          // 清空数组里面的数据
+          this.flag = -100;
+          var modal = document.querySelector(".modal");
+          modal.style.display = "block";
+        }
+      }
+    })
+
+  </script>
+</body>
+
+</html>

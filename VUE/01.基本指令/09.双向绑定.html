@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>双向绑定</title>
+</head>
+<body>
+  <div id="app">
+    <!-- v-model 作用于表单控件input  改变表单的内容会同事改变data数据中对应的内容，从而实现dom元素的渲染-->
+    <input type="text" v-model="msg">
+    <h2>msg的值是：{{msg}}</h2>
+    <button v-on:click="addFruit">添加</button>
+    <h2>水果列表</h2>
+    <ul>
+      <li v-for="item in fruits">{{item}}</li>
+    </ul>
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        msg: "",
+        fruits:["香蕉","苹果"]
+      },
+      methods: {
+        addFruit: function() {
+          this.fruits.push(this.msg)
+          this.msg = "";
+        }
+      }
+    })
+  </script>
+</body>
+</html>

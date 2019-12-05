@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>好友展示</title>
+    <link rel="stylesheet" href="css/qq.css" >
+</head>
+<body>
+    <div id="wrap">
+        <div class="list">
+            <h2><span></span>我的好友</h2>
+            <ul>
+                <li>小明LOVE</li>
+                <li>名字就是不正经</li>
+                <li>leo是个胖子</li>
+                <li>momo就是陌陌</li>
+            </ul>
+            <h2><span></span>企业好友</h2>
+            <ul>
+                <li>小明LOVE</li>
+                <li>名字就是不正经</li>
+                <li>leo是个胖子</li>
+                <li>momo就是陌陌</li>
+            </ul>
+            <h2><span></span>黑名单</h2>
+            <ul>
+                <li>小明LOVE</li>
+                <li>名字就是不正经</li>
+                <li>leo是个胖子</li>
+                <li>momo就是陌陌</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        var hs = document.querySelectorAll(".list h2");
+        var uls = document.querySelectorAll(".list ul");
+        var flags = [false,false,false];
+
+        // 其他不折叠
+        // for(let i=0; i<hs.length; i++){
+        //     hs[i].onclick = ()=>{
+        //         if(!flags[i]) {
+        //             uls[i].classList.add("active");
+        //             flags[i] = true;
+        //         }else {
+        //             uls[i].classList.remove("active");
+        //             flags[i] = false;
+        //         }               
+        //     }
+        // }
+        for(let i=0; i<hs.length; i++){
+            hs[i].onclick = ()=>{
+                for(var j=0;j<hs.length;j++) {
+                    hs[j].classList.remove("active");
+                    uls[j].classList.remove("active");
+                }
+                hs[i].classList.add("active");
+                uls[i].classList.add("active");        
+            }
+        }
+    </script>
+</body>
+</html>

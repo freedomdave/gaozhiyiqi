@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>自定义事件</title>
+  <style>
+  </style>
+</head>
+<body>
+  <div id="app">
+    <app></app>
+  </div>
+
+  <video src=""></video>
+  <script src="../js/vue.js"></script>
+  <script>
+    Vue.component("btn",{
+      template: `
+        <button v-on:click="sendData" >点击按钮传递数据</button>
+      `,
+      data: function() {
+        return {
+          msg: "hello 自定义事件"
+        }
+      },
+      methods: {
+        sendData: function() {
+          // $emit()  可以触发自定义事件
+          // $emit("自定义事件名称",可选参数)
+          this.$emit("alert-event", this.msg);
+        }
+      }
+    })
+    Vue.component("app", {
+      template: `
+        <div>
+          <!-- v-on绑定事件 -->
+          <btn v-on:alert-event="alertData"></btn>
+        </div>
+      `,
+      methods: {
+        alertData: function(d) {
+          alert(d)
+        }
+      }
+    })
+
+    new Vue({
+      el: "#app"
+    })
+  </script>
+</body>
+</html>

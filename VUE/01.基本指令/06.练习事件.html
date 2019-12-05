@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <button v-on:click="subCount">-</button> 
+    {{ count }} 
+    <button v-on:click="addCount">+</button>
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        count: 0,
+      },
+      methods: {
+        addCount: function() {
+          this.count ++;
+        },
+        subCount: function() {
+          this.count --;
+        }
+      },
+    })
+  </script>
+</body>
+</html>

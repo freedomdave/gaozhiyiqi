@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <button>获取数据</button>
+
+  <script src="jquery.js"></script>
+  <script>
+    // jquery中ajax   启动命令  http-server
+    // 安装http-server    npm i -g http-server
+    $("button").click(function(){ 
+      $.ajax({
+        // 同一个域名 http://www.baidu.com/index.html
+        // 同一个域名 http://www.baidu.com/about.html
+        // localhost:8080
+        // 同一个ip  http://127.0.0.1:8080/index.html
+        url: "http://127.0.0.1:8080/data.txt",
+        type: "get",/* 请求方式 */
+        success: function(response) {
+          /* 请求成功，服务器给返回的数据response */
+          console.log(response)
+        }
+      })
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: calc(200px - 100px);
+            height: 400px;
+            background-color: #f00;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+
+    </div>
+    <script>
+        // 对象
+        var obj = {
+            /* 属性名：属性值 */
+            name: "于XX",
+            /* 方法： 函数 */
+            playGame: function(x) {
+                console.log(this.name + "会玩魂斗罗！" + x)
+            }
+        }
+        obj.playGame(5)
+            // var nums = [1, 2, 3, 6];
+            // // arr[0] 获取数组里面的第一个元素
+            // var arr1 = [{
+            //     a: 1
+            // }, {
+            //     b: 2
+            // }, {
+            //     c: 3
+            // }];
+            // arr1[1]  --> {b:2}
+            // arr1[1].b  --> 2
+            // arr1[2].c  --> 3
+            // var arr = [{ // arr[0]  获取数组里面的第一个元素
+            //         name: "电影", // arr[0].name --> 电影
+            //         list: [ // arr[0].list --> list数组
+            //             { // arr[0].list[0] --> list数组里的第一个元素
+            //                 title: "钢铁侠", // arr[0].list[0].title
+            //                 date: "2019-11-11",
+            //                 price: 29.9
+            //             }, {
+            //                 title: "钢铁侠2",
+            //                 date: "2019-11-15",
+            //                 price: 19.9
+            //             }
+            //         ]
+            //     },
+
+        //     {
+        //         name: "音乐",
+        //         list: [{
+        //             title: "狼的诱惑",
+        //             date: "2019-11-11",
+        //             price: 5 // arr[1].list[0].price
+        //         }, {
+        //             title: "自由飞翔",
+        //             date: "2019-11-15",
+        //             price: 10
+        //         }]
+        //     }
+        // ]
+
+        // for (var i = 0; i < arr.length; i++) {
+        //     // arr[i] 数组里面的元素（对象）
+        //     console.log(arr[i].name);
+
+        //     for (var j = 0; j < arr[i].list.length; j++) {
+        //         // console.log( arr[i].list[j] )
+        //         console.log(arr[i].list[j].title, arr[i].list[j].date)
+        //     }
+        // }
+    </script>
+</body>
+
+</html>

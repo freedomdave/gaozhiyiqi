@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    {{msg}}
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        msg: "hello mounted"
+      },
+      // 挂载完成状态
+      mounted: function() {
+        alert(this.msg)
+      },
+    })
+  </script>
+</body>
+</html>

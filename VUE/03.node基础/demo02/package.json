@@ -1,0 +1,15 @@
+{
+  "name": "demo01",
+  "version": "1.0.0",
+  "description": "学习前端开发",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "vue": "^2.6.10",
+    "jquery": "^3.0.0"
+  }
+}

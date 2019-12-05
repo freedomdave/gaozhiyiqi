@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>子组件给父组件传值</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    button {
+      width: 30px;
+      height: 30px;
+      border: 0;
+      background-color: #007bff;
+      border-radius: 4px; /* 圆角 */
+      color: #fff;
+      outline: 0;
+    }
+    button:focus {
+      /* box-shadow: x(水平偏移位置) y(垂直偏移位置) blur(阴影模糊值) size(阴影大小) color; */
+      box-shadow: 0 0 0 2px blue;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <app></app>
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    // 按钮组件，这里只有两个按钮
+    Vue.component("btn",{
+      template: `
+        <div>
+          <button v-on:click="jian">-</button>
+          <button v-on:click="jia">+</button>
+        </div>
+      `,
+      methods: {
+        jia: function() {
+          //触发自定义事件
+          this.$emit("jia-event",5)
+        },
+        jian: function() {
+          this.$emit("jian-event",5)
+        }
+      }
+    })
+    // 父组件
+    Vue.component("app",{
+      template: `
+        <div>
+          <h2> {{number}} </h2> 
+          <!-- v-on监听自定义事件 -->
+          <btn v-on:jia-event="add" v-on:jian-event="sub"></btn>
+        </div>
+      `,
+      data: function() {
+        return {
+          number: 1
+        }
+      },
+      methods: {
+        add: function(n) {
+          this.number += 5;
+        },
+        sub: function(n) {
+          this.number -= 5;
+        }
+      }
+    })    
+    // vue实例化对象
+    new Vue({
+      el: "#app"
+    })
+  </script>
+</body>
+</html>

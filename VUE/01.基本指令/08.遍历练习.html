@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>遍历练习</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    table {
+      width: 800px;
+      text-align: center;
+      border-spacing: 0;
+      /*去掉边框与边框之间的距离  cellspacing*/
+    }
+
+    td,
+    th {
+      border-bottom: 2px solid #ddd;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <table>
+      <tr>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>性别</th>
+        <th>住址</th>
+        <th>爱好</th>
+      </tr>
+      <tr v-for="student in students">
+        <td v-for="value in student">{{value}}</td>
+      </tr>     
+    </table>
+  </div>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        students: [
+          {
+            name: "张三",
+            age: 12,
+            sex: "男",
+            address: "北京",
+            fav: "唱歌-旅游"
+          },
+          {
+            name: "李四",
+            age: 12,
+            sex: "男",
+            address: "北京",
+            fav: "唱歌-旅游"
+          },
+          {
+            name: "张六",
+            age: 12,
+            sex: "男",
+            address: "北京",
+            fav: "唱歌-旅游"
+          }
+        ]
+      }
+    })
+  </script>
+</body>
+
+</html>

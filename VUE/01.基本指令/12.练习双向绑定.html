@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>双向绑定</title>
+  <style>
+    table {
+      width: 400px;
+      /* 解决单元格边框之间的间隙 */
+      border-spacing: 0;
+    }
+
+    td {
+      border-bottom: 1px solid #000;
+    }
+    .modal {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(0,0,0,0.4);
+      /* display: none; */
+    }
+    .modal-content {
+      width: 600px;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+    .modal-footer {
+      float: right;
+    }
+    .clear {
+      clear: both;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    用户名: <input type="text" placeholder="请输入用户名" v-model="newName">
+    年龄: <input type="text" placeholder="请输入年龄" v-model="newAge">
+    <button v-on:click="addUser">添加新用户</button>
+    <h2>显示所有用户</h2>
+    <table>
+      <!-- thead 表格的头部 -->
+      <thead>
+        <tr>
+          <td>编号</td>
+          <td>姓名</td>
+          <td>年龄</td>
+          <td>操作</td>
+        </tr>
+      </thead>
+      <!-- tbody 表格主体内容 -->
+      <tbody>
+        <tr v-for="user,index in users">
+          <td> {{index + 1}} </td>
+          <td> {{user.name}} </td>
+          <td> {{user.age}} </td>
+          <td><button v-on:click="del(index)">删除</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="modal" >
+      <div class="modal-content">
+        <h4 class="modal-title">确认删除么？</h4>
+        <hr>
+        <div class="modal-footer">
+          <button type="button" class="cancel" @click="hide">取消</button>
+          <button type="button" class="sure" @click="isDel">确认</button>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+
+    
+  </div>
+  
+  <script src="../js/vue.js"></script>
+  <script>
+    
+
+    new Vue({
+      el: "#app",
+      data: {
+        users: [
+          { name: "zhangsan", age: 12 },
+          { name: "lisi", age: 15 }
+        ],
+        newName: "",
+        newAge: "",
+      },
+      methods: {
+        addUser: function () {
+          // 1.创建一个新的对象newObj
+          var newObj = {};
+          // 2. 将newName、newAge添加到对象中
+          newObj.name = this.newName;
+          newObj.age = this.newAge;
+          // 3.将对象newObj添加到数组users中
+          this.users.push(newObj);
+          // 清除表单中的数据
+          this.newAge = "";
+          this.newName = "";
+        },
+        del: function (x) {
+          // x是事件对象
+          this.users.splice(x,1); 
+
+        },
+      }
+    })
+
+  </script>
+</body>
+
+</html>

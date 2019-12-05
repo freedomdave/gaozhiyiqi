@@ -59,3 +59,8 @@ typings/
 
 # next.js build output
 .next
+
+# 视频和图片
+resource/
+视频/
+.mp4

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>筛选商品</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <h1>用VUE实现以下功能</h1>
+    <div id="wrap">
+        <section id="section">
+            <nav id="choose">
+                你的选择：
+                <mark @click="removeHandle(key)" v-for="item,key in choose">{{item}}<a href="javascript:;">X</a></mark>
+                <!-- <mark>锤子<a href="javascript:;">X</a></mark> -->
+            </nav>
+            <ul id="type">
+                <li v-for="item,index in datalist">
+                    {{item.title}}：
+                    <a  href="javascript:;" 
+                        v-for="option,i in item.list" 
+                        @click="addChooseHandle(option,index,i)"
+                        v-bind:class="{active: item.index === i}"
+                    >{{option}}</a>
+                </li>
+            </ul>
+        </section>
+    </div>
+
+    <script src="../../js/vue.js"></script>
+    <script>
+        var data = [
+            {
+                title: "品牌",
+                list: ["苹果", "小米", "华为", "锤子", "魅族", "OPPO", "VIVO", "360", "乐视", "美图", "三星"]
+            },
+            {
+                title: "尺寸",
+                list: ["3.0英寸以下", "3.0-3.9英寸", "4.0-4.5英寸", "4.6-4.9英寸", "5.0-5.5英寸", "6.0英寸以上",]
+            },
+            {
+                title: "系统",
+                list: ["安卓（Android）", "苹果（IOS）", "微软（WindowsPhone）", "无", "其他"]
+            },
+            {
+                title: "网络",
+                list: ["联通3G ","双卡单4G ","双卡双4G ","双卡5G ","电信4G ","联通4G ","移动4G"]
+            }
+        ]
+
+
+
+        /* 
+            { 
+                0:"小米",
+                1:"网络"
+             } 
+            对象的key值不能重复
+            用对象来存储
+            思路： 用对象来存储每一行选中的标签，每一行的下标作为key值
+
+            需要给数据的每一行添加一个属性，属性用来记录选中的标签
+         */     
+        
+        // 需要处理data
+
+        data.forEach(item => item.index = -1);
+        console.log(data)
+        new Vue({
+            el:"#wrap",
+            data: {
+                datalist:data,
+                // choose: {}
+                choose: []
+            },
+            methods: {
+                addChooseHandle: function(option,index,i){
+                    // 在vue中这样给对象添加属性并不会响应
+                    // this.choose[index] = option;
+                    // 使用$set()
+                    this.$set(this.choose,index,option);
+                    // this.choose.splice(index,1,option);
+                    this.datalist[index].index = i;
+                },
+                removeHandle (key) {
+                    /* 
+                        choose {
+                            0：；
+                            1：；
+                            2：；
+                            3：；
+                        }
+                     */
+                    // 删除对象的属性
+                    this.$delete(this.choose,key);
+                    // this.choose.splice(key,1);
+                    this.datalist[key].index = -1;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    * {
+      transform: translate() rotate() rotate3d(x,y,z,deg) scale(0-1);
+      animation: name duration timing-function delay iteration-count direction ;
+      /* 动画状态： paused 暂停动画  running 动画运行 */
+      animation-play-state: paused;
+    }
+    @keyframes ani {
+      from {}
+      to {}
+    }
+  </style>
+</head>
+<body>
+  <button class="start">开始</button>
+  <button class="stop">暂停</button>
+  <script>
+    // alt + shift + 向下箭头
+    var start = document.querySelector(".start");
+    var stop = document.querySelector(".stop");
+    // #ffffff  rgb(0,0,0)->rgb(255,255,255)
+    function getColor() {
+      // 获取到0-255
+      var red = Math.round( Math.random()*255 );
+      var green = Math.round( Math.random()*255 );
+      var blue = Math.round( Math.random()*255 );
+      // document.body.style.backgroundColor = "rgb(" + red + "," + green + "," + blue + ")" ;
+      document.body.style.backgroundColor = `rgb(${red},${green},${blue})` ;
+    }
+    var time;
+    start.onclick = function() {
+      clearInterval(time); // 每次开始前，先清空计时器
+      time = setInterval( getColor, 100 );
+    }
+    stop.onclick = function() {
+      clearInterval(time);
+    }
+    //  获取到 10-25 之内的随机数
+    10 + Math.round( Math.random()*15 );
+  </script>
+
+
+
+  <script>
+    /* 
+      if(隐式转换成布尔值){}
+      空字符串、0、null/undefined/NaN 转换为布尔值是false
+
+      遍历对象 for...in  
+      for(var key in obj) {
+        key是对象的属性名
+      }
+      for(var i in array) {
+        i 是数组的下标(索引)
+      }
+
+      DOM： 
+        获取元素： 
+          querySelector() 获取第一个元素 
+          querySelectorAll() 获取所有的
+          getElementById()
+        属性
+          dom.setAttribute("class","box")  设置属性
+          dom.getAttribute("class")  获取属性值
+        添加dom元素
+          appendChild()
+        移除元素
+          parent.removeChild(children)
+        创建dom元素
+          document.createElement() 创建元素节点
+          document.createTextNode() 创建文本节点
+          dom.innerHTML = "" 创建、替换html内容
+          dom.innerText = "" 创建、替换文本内容 
+
+      数学对象 Math 
+        Math.random() 随机数 (0-1)
+        Math.round()  四舍五入
+        Math.floor()  向下取整
+        Math.ceil()   向上取整
+        Math.MIN      最低值
+        Math.MAX      最大值
+        Math.abs()    绝对值
+        Math.PI       π  π
+     */
+    //  document.body.innerHTML = "<div>nihao</div>";
+    //  document.body.innerText = "<div>nihao</div>";
+  </script>
+
+</body>
+</html>

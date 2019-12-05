@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>axios 实例</title>
+</head>
+
+<body>
+  <button>获取数据</button>
+  <script src="axios.js"></script>
+  <script type="text/javascript">
+
+    var btn = document.querySelector("button")
+
+    btn.onclick = function() {
+      // axios.get("data.txt")
+      // .then(function(res) {
+      //   console.log(res.data)
+      // })
+      axios({
+        method: "get",
+        url: "/data.txt",
+      }).then(function(res) {
+        console.log(res.data)
+      })
+    }
+  </script>
+</body>
+
+</html>

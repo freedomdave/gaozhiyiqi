@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>v-for</title>
+</head>
+<body>
+  <div id="app">
+    <h2>水果列表</h2>
+    <ul>
+      <!-- v-for="value,index in array"
+        value：数组中的每一个元素
+        index: 是元素的索引
+        array: 是data数据中的数组
+      -->
+      <li v-for="value,index in fruits">{{index}}->{{value}} </li>
+    </ul>
+    <h3>小明的个人信息</h3>
+    <ul>
+      <!-- v-for="value,key,index in obj"
+        value：对象的属性值
+        key: 对象的属性名
+        index: 索引
+        obj: 是data数据中的对象
+      -->
+      <li v-for="value,key in person">{{value}} -> {{key}}</li>
+    </ul>
+  </div>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        fruits:["香蕉","苹果","鸭梨"],
+        person: {
+          key: "value",
+          height: 180,
+          weight: "50kg",
+          age: 12
+        }
+
+      }
+    })
+  
+  </script>
+</body>
+</html>

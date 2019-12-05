@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        /* 
+    css3 
+    转换： transform: 
+        旋转: rotate()
+        位移：translate()
+    动画：animation:;
+    width
+    height
+     */
+        
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #wrap {
+            width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #aaa;
+            overflow: hidden;
+        }
+        
+        hr {
+            margin: 20px 0;
+        }
+        
+        .item {
+            float: left;
+            width: 150px;
+            height: 150px;
+            margin: 10px;
+            background-color: #666;
+            border-radius: 10px;
+        }
+        
+        .item h3 {
+            /* text-align: left/right/center/justify; */
+            text-align: center;
+            line-height: 2em;
+        }
+        
+        .loading {
+            height: 100px;
+        }
+        
+        .square {
+            width: 20px;
+            height: 20px;
+            background-color: blue;
+            animation: loadingA 2s infinite alternate linear;
+        }
+        
+        .loadingB {
+            text-align: center;
+            line-height: 100px;
+        }
+        
+        .item .line {
+            width: 15px;
+            height: 15px;
+            display: inline-block;
+            background-color: blue;
+            border-radius: 10px;
+        }
+        
+        .loadingB .line:nth-child(1) {
+            /* :nth-child(1) 找到父级元素里面的第一个子元素*/
+            animation: loadingB 1.5s infinite alternate linear;
+        }
+        
+        .loadingB .line:nth-child(2) {
+            animation: loadingB 1.5s 0.5s infinite alternate linear;
+        }
+        
+        .loadingB .line:nth-child(3) {
+            animation: loadingB 1.5s 1s infinite alternate linear;
+        }
+        
+        .loadingC {
+            text-align: center;
+            line-height: 100px;
+        }
+        
+        .yuan {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            border: 3px dashed blue;
+            border-radius: 50%;
+            animation: loadingC 3s infinite ease;
+        }
+        
+        .loadingD {
+            text-align: center;
+            line-height: 100px;
+        }
+        
+        .loadingD span:nth-child(1) {
+            animation: loadingD 0.8s infinite linear;
+        }
+        
+        .loadingD span:nth-child(2) {
+            animation: loadingD 0.8s 0.1s infinite linear;
+        }
+        
+        .loadingD span:nth-child(3) {
+            animation: loadingD 0.8s 0.2s infinite linear;
+        }
+        
+        .loadingD span:nth-child(4) {
+            animation: loadingD 0.8s 0.3s infinite linear;
+        }
+        
+        .loadingD span:nth-child(5) {
+            animation: loadingD 0.8s 0.4s infinite linear;
+        }
+        
+        .loadingD span:nth-child(6) {
+            animation: loadingD 0.8s 0.5s infinite linear;
+        }
+        
+        .loadingD span:nth-child(7) {
+            animation: loadingD 0.8s 0.6s infinite linear;
+        }
+        
+        .loadingD span:nth-child(8) {
+            animation: loadingD 0.8s 0.7s infinite linear;
+        }
+        /* 设置动画集 */
+        
+        @keyframes loadingA {
+            100% {
+                transform: translateX(100px) rotate(360deg);
+            }
+        }
+        
+        @keyframes loadingB {
+            100% {
+                height: 40px;
+            }
+        }
+        
+        @keyframes loadingC {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        @keyframes loadingD {
+            100% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <h1>CSS3 Loading animations</h1>
+        <hr>
+        <div class="item">
+            <h3>loading A</h3>
+            <div class="loading">
+                <div class="square"></div>
+            </div>
+        </div>
+        <div class="item">
+            <h3>loading B</h3>
+            <div class="loading loadingB">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </div>
+        </div>
+        <div class="item">
+            <h3>loading C</h3>
+            <div class="loading loadingC">
+                <span class="yuan"></span>
+            </div>
+        </div>
+        <div class="item">
+            <h3>loading D</h3>
+            <div class="loading loadingD">
+                <!-- loading... -->
+                <span>l</span><span>o</span><span>a</span><span>d</span><span>i</span><span>n</span><span>g</span><span>...</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+    // 唐超 张宇龙 宋文钊 付嵩岩 戴广誉 姜凯生 李明翰 刘承博
+    // 张一鸣 逯达 杨会君 田宇浩 李晓鹏 年佳茹 李佳 岳佳琦 蔺佳辉
+    //  尹梦凡 李云浩 张天宇 赵广远 王亮 李连杰 刘梓成 王馨宁 刘佳树
+    //  邸佳悦 于莹彬 马宇飞 杨磊 李梓萌 李婉婷 赵环宇 黄玉浩
+    $("div").on("click", ".box", function() {
+
+    })
+</script>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // // 求数组里面数据的加和
+    // var arr = [2,5,6,7,8,4,2,3];
+    // var sum = 0;
+    // for(var i=0; i<arr.length; i++) {
+    //   sum = sum + arr[i];
+    // }
+    // console.log(sum)
+
+
+
+    // /* function fn(x,y) { 
+    //   /* 在函数定义（声明）时候 ，括号里面传入的参数，叫形参 */
+    //   /* 函数调用时，括号里面传入的参数是 实参 实参可以少传，不能多传*/
+    //   return x+y ;
+    // }
+    // function fn1(x,y) {
+    //   console.log(x+y) ;
+    // }
+    // console.log( fn(10,"hello") )  // 表达式的结果  10hello 
+    // console.log( fn1(10,20) )  // 表达式的结果   undefined
+
+    // var a1 = 10;
+    // var a2 = 20; */
+
+    // console.log( "a1 + a2 = " + a1 + a2); // a1 + a2 = 1020
+
+
+
+    function say (name) {  // name是形参
+      console.log(name) //如果函数调用的时候，没有实参，打印结果是undefined
+    }
+    // 函数调用 这个表达式的返回值 ：
+    // 1. 如果函数有返回值，结果就是返回值
+    // 2. 如果函数没有返回值，结果就是 undefined
+    say(100); // 100 是实参
+    // 实参可以是数字，字符串，对象，数组，bool, null, 函数
+    function fn( f ) {
+      console.log(f())
+    }
+
+    fn(say)
+  </script>
+</body>
+</html>

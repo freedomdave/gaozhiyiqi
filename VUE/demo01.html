@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      position: relative;     
+      /* 相对定位 
+      不脱离文档流；  
+      定位参照本身的位置定位，
+      移动后，本身位置保留， 
+      不设置上下左右值的时候，不影响其他元素布局*/
+      width: 500px;
+      height: 500px;
+      border: 2px solid #000;
+    }
+    .red {
+      /* 绝对定位  absolute  要有参照物
+        参照物是离他 最近的 有定位的 父级或者祖先级，如果都没有定位，参照浏览器
+        脱离文档流，
+        可以直接设置元素宽度和高度，不用考虑元素是否是块元素
+      */
+      position: absolute;  /* 绝对定位   子绝父相 */
+      top: 0;
+      left: 0;
+      width: 100px;
+      height: 100px;
+      background-color: #f00;
+      z-index: 2;
+    }
+    .green {
+      position: absolute;
+    }
+    aside {
+      position: fixed;  /* 固定定位，参照物是浏览器窗口 不随页面滚动而滚动 脱离文档流*/
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100px;
+      height: 200px;
+      background-color: teal;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <!-- lorem  垃圾代码 -->
+  <div class="box">
+    <div class="red"></div>
+    <div class="green">这个是第二个元素的内容</div>
+    <div class="blue"></div>
+  </div>
+  <aside>  
+    我是侧边栏
+  </aside>
+</body>
+</html>

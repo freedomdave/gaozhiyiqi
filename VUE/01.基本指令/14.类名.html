@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: #f00;
+    }
+    .active {
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <!-- 绑定属性 v-bind 简写是 冒号 -->
+    <div v-bind:class="{active: isActive}" class="box" v-on:click="changeBgc"></div>
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        isActive: false,
+      },
+      methods: {
+        changeBgc: function() {
+          this.isActive = true;
+        }
+      }
+    })
+  
+  </script>
+</body>
+</html>

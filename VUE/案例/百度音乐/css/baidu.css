@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #222;
+}
+html,body {
+    width: 100%;
+    height: 100%;
+}
+.wrap {
+    width: 100%;
+    height: 100%;
+    /* margin: 0 auto; */
+    background-image: url(../img/bg1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+.baidu {
+    width: 600px;
+    height: 400px;
+    margin: 50px auto;
+    /* margin: 30px; */
+    background-color: #fff;
+    position: relative;
+}
+.list li{
+    display: flex;
+    justify-content: space-around;
+    line-height: 3em;
+
+}
+.list-head {
+    background-color: rgba(230, 50, 110, 0.5);
+}
+.list li div {
+    flex: 0 0 150px;
+    text-align: center;
+}
+.list li span {
+    flex: 1 1 150px;
+    text-align: center;
+}
+
+.list-body li {
+    display: flex;
+    justify-content: space-around;
+    line-height: 3em;
+}
+.list-body li:hover {
+    background-color: rgba(0,0,0,0.1);
+}
+
+.select {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    line-height: 3em;
+    width: 100%;  
+    display: flex;
+    background-color:  rgba(230, 50, 110, 0.5);
+}
+
+.select .selectall {
+    flex: 0 0 150px;
+    text-align: center;
+}
+.select .others {
+    flex: 0 0 450px;
+    display: flex;
+    justify-content: space-between;
+}
+.select .others span {
+    flex-grow: 1;
+    text-align: center;
+}

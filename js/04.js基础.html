@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /* for(1.初始化; 2. 判断式; 3.计数器) {
+      // 4.代码块
+
+      执行顺序 1-> 2-> 4-> 3 -> 2 4 3
+    } */
+    // 输出1-100内 输出3的倍数，含有3的的危险数
+    // for(var i=1; i<=100; i++) {
+    //   // parseInt 取整数
+    //   // parseFloat 小数
+    //   if(i%3 === 0 || i%10 === 3 || parseInt(i/10) === 3 ) {
+    //     console.log(i)
+    //   }
+    // }
+    // Number()    只要字符串中含有非数字的字符，结果就是NaN
+    // parseInt()  整型数字 当字符串的开头是数字的时候，会将数字的整数部分返回，如果字符开头不是数字，返回结果是NaN
+    // parseFloat() 浮点型数字  想要输出小数 开头是数字的字符，结果会返回数字，这个数字包含小数，如果字符串中有两个小数点，第二个小数点后面的数会省略掉
+    console.log( parseInt("10.5.5fasfsda") ) // 10
+    console.log( parseInt("a10.5fasfsda") ) // NaN not a number
+    console.log( parseInt("10fasfsda") ) // 10
+    console.log( Number("10.5fasfsda") ) // NaN
+    console.log( Number("a10.5fasfsda") ) // NaN not a number
+    console.log( Number("10fasfsda") ) // NaN
+
+    // 在100-1000 有一个数，这个数的每位数的立方和相加等于这个数本身，
+    // 水仙花数 4个数
+    // || && !5
+    for(var i=100; i<1000; i++) {
+      var b = parseInt(i/100); // 拿到百位上的数；
+      var s = parseInt(i/10)%10 // 拿到十位上的数
+      var g = i%10 // 拿到各位上的数
+      if(i ===  (b*b*b + s*s*s + g*g*g) ) {
+        console.log(i)
+      }
+    }
+    // 隐式转换
+    // Boolean(5)
+    // if(5) {
+    //   alert(1111)
+    // }
+
+    var a;
+    console.log(Boolean(a)) // undefined
+    console.log(a) // undefined
+    a = "111";
+    if(a) {
+      alert("NI好")
+    }
+    // 除了 0 空字符串 null undefined NaN 转换为布尔值是false,其他均为true
+    // 变量的命名规则：
+    /*  
+      1. 变量名可以包含$ 下划线 数字 字母； 但是不能以数字开头
+      2. 变量名不能是关键字和保留字
+      3. 区分大小写    
+    */
+    // 变量的命名规范：
+    /* 
+      1. 要有语义
+      2. 推荐大家使用驼峰命名法 firstName backgroundColor
+    */
+
+    var obj1 = {
+      name: "xiaoming",
+      age: 10
+    }
+    // var obj2 = obj1;
+    obj2.name = "小明";
+    console.log(obj1);  // "小明"
+    console.log(obj2);  // "小明"
+    
+    function fn(option) {
+      // 代码块
+    }
+
+    var obj2 = fn(obj1);
+  </script>
+
+</body>
+</html>

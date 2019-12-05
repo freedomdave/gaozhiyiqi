@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>原生ajax</title>
+</head>
+<body>
+  <button>获取数据</button>
+  <script>
+    // AJAX获取数据，在不刷新页面的情况下加载数据
+    //1. 创建XMLHttpRquest对象 ，通过new构造函数实现
+    // var xhr = new XMLHttpRequest();
+    var btn = document.querySelector("button");
+    // btn.onclick = function() {
+    //   // 2. xhr.open("请求方式(get,post)","请求的路由")
+    //   xhr.open("get","http://localhost:8081/data.txt")
+    //   // 3. xhr.send() 发送请求
+    //   xhr.send();
+    //   //4. readyState  监听readyState状态 有5种状态 从0开始，一直到4
+    //   xhr.onreadystatechange = function() {
+    //     //5. 当readyState状态为4的时候，客户端完全接收到服务端响应的数据，请求成功http的状态码 200
+    //     if(xhr.readyState === 4 && xhr.status === 200) {
+    //       console.log( xhr.responseText )  /* response 响应 */
+    //     }
+    //   }
+    // }
+
+    // myAjax("get","http://127.0.0.1:8080/data.txt",function(res){
+    //   console.log(res)
+    // })
+    function myAjax( method, url, next) {
+      var xhr = new XMLHttpRequest();
+      xhr.open(method,url);
+      xhr.send();
+      xhr.onreadystatechange = function() {
+        if( xhr.readyState === 4 && xhr.status === 200) {
+          next(xhr.response)
+        }
+      }
+    }
+    btn.onclick = function() {
+      myAjax("get","http://localhost:8081/data.txt",function(res) {
+        console.log(res)
+      })
+    }
+  </script>
+</body>
+</html>

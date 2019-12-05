@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>筛选商品</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+  <div id="wrap">
+    <section id="section">
+      <nav id="choose">
+        你的选择：
+        <!-- <mark>锤子<a href="javascript:;">X</a></mark> -->
+      </nav>
+      <ul id="type">
+        <li>
+          品牌：
+          <a href="javascript:;">苹果</a>
+          <a href="javascript:;">小米</a>
+          <a href="javascript:;">华为</a>
+          <a href="javascript:;">锤子</a>
+          <a href="javascript:;">魅族</a>
+          <a href="javascript:;">OPPO</a>
+          <a href="javascript:;">VIVO</a>
+          <a href="javascript:;">360</a>
+          <a href="javascript:;">乐视</a>
+          <a href="javascript:;">美图</a>
+          <a href="javascript:;">三星</a>
+        </li>
+        <li>
+          尺寸：
+          <a href="javascript:;">3.0英寸以下</a>
+          <a href="javascript:;">3.0-3.9英寸</a>
+          <a href="javascript:;">4.0-4.5英寸</a>
+          <a href="javascript:;">4.6-4.9英寸</a>
+          <a href="javascript:;">5.0-5.5英寸</a>
+          <a href="javascript:;">6.0英寸以上</a>
+        </li>
+
+        <li>
+          系统：
+          <a href="javascript:;">安卓（Android）</a>
+          <a href="javascript:;">苹果（IOS）</a>
+          <a href="javascript:;">微软（WindowsPhone）</a>
+          <a href="javascript:;">无</a>
+          <a href="javascript:;">其他</a>
+        </li>
+        <li>
+          网络：
+          <a href="javascript:;">联通3G</a>
+          <a href="javascript:;">双卡单4G</a>
+          <a href="javascript:;">双卡双4G</a>
+          <a href="javascript:;">双卡5G</a>
+          <a href="javascript:;">电信4G</a>
+          <a href="javascript:;">联通4G</a>
+          <a href="javascript:;">移动4G</a>
+        </li>
+      </ul>
+    </section>
+  </div>
+
+
+  <script>
+    (function () {
+      var ul = document.querySelector("ul");
+      var lis = ul.querySelectorAll("li");
+      var option = ul.querySelectorAll("a");
+      var choose = document.querySelector("#choose");
+      var arr = [];
+      // 给每个列表项元素添加一个index属性，方便以后向数组中插入
+      for (var i = 0; i < lis.length; i++) {
+        lis[i].index = i;
+      }
+
+      for (var i = 0; i < option.length; i++) {
+        option[i].onclick = function () {
+          var pid = this.parentNode.index;
+          var mark = document.createElement("mark");
+          var a = document.createElement("a");
+          var isReplace = false;
+          // 删除功能
+          a.onclick = function () {
+            arr.splice(mark.pid, 1);
+            for (var i = 0; i < lis[mark.pid].children.length; i++) {
+              lis[mark.pid].children[i].style.color = "";
+            }
+            choose.removeChild(mark);
+          }
+
+          // 清除所有文字的颜色
+          for (var i = 0; i < this.parentNode.children.length; i++) {
+            this.parentNode.children[i].style.color = ""
+          }
+
+          // 将被点击元素的颜色高亮
+          this.style.color = "#28a5c4";
+          a.href = "javascript:;";
+          a.innerHTML = "X";
+
+          // 将点击元素的内容添加到mark元素中
+          mark.innerHTML = this.innerHTML;
+          mark.appendChild(a);
+          mark.pid = pid;
+
+          // 遍历选择元素数组的内容
+          for (var i = 0; i < arr.length; i++) {
+            // 如果数组里面其中一个元素的pid 与点击元素的父级（li）的索引相同
+            if (arr[i].pid == pid) {
+              // 被替换的索引为当前索引
+              isReplace = i;
+            }
+          }
+
+          if (isReplace === false) {
+            // isReplace值 为false, 也就是没有选择任何条件
+            arr.push(mark);
+          } else {
+            // 替换内容
+            arr[isReplace] = mark;
+          }
+          // 数组里面的内容进行排序 通过标签的索引来排序
+          arr.sort(function (mark1, mark2) {
+            return mark1.pid - mark2.pid;
+          })
+
+          choose.innerHTML = "你的选择：";
+          // 遍历数组中所有内容并添加到页面的dom中
+          for (var i = 0; i < arr.length; i++) {
+            choose.appendChild(arr[i])
+          }
+        }
+      }
+    })()
+  </script>
+</body>
+
+</html>
